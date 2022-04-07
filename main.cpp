@@ -8,7 +8,7 @@ using namespace sf;
 
 const int rows = 6, col = 11;              // rows and columns of blocks
 
-										   // make window with any size but still it's style 
+					   // make window with any size but still it's style 
                                            // is Fullscreen
 RenderWindow window(VideoMode(1920, 1080), "hi", Style::Fullscreen);
 
@@ -31,21 +31,21 @@ CircleShape ball(int position_x, int position_y) {
 	ball.setFillColor(Color(255, 255, 255));
 	ball.setPosition(Vector2f(position_x, position_y));
 	ball.setOrigin(15, 15);
-	ball.setScale(0, 0);				  // make any ball "in first disappear" 
+	ball.setScale(0, 0);		           // make any ball "in first disappear" 
 	return ball;
 }
 
 void blokcs(RectangleShape blks[][11]) {
-	RectangleShape grec(Vector2f(150, 25)); // geniral RectangleShape to copy
-	int y = 100;                            // virtical distance bettewn top row and top of window
+	RectangleShape grec(Vector2f(150, 25));    // geniral RectangleShape to copy
+	int y = 100;                               // virtical distance bettewn top row and top of window
 	for (int i = 0; i < rows; i++)
 	{
-		int s = 0;                          // horizontal distance bettewn blocks
+		int s = 0;                         // horizontal distance bettewn blocks
 		for (int e = 0; e < col; e++)
 		{
 			blks[i][e] = grec;
-			int x = 50 + 165 * s;            // 50 = horizontal distance bettewn lift siade window
-											      // and first block. and more when we wll meet.	
+			int x = 50 + 165 * s;       // 50 = horizontal distance bettewn lift siade window
+						    // and first block. and more when we wll meet.	
 			s++;
 			blks[i][e].setPosition(Vector2f(x, y));
 			blks[i][e].setFillColor(Color(44 + rand() % 255,44+ rand() % 255, 44+rand() % 255));
@@ -98,8 +98,7 @@ void blks_ball_osi(CircleShape ball, RectangleShape blks[][11],
 			// check oscillision bettewn blks_ball "by sides"
 			if (ballRec.intersects(blksRec)
 				&& (blksRec.top < ballRec.top + .5 * ballRec.height
-					&& blksRec.top + blksRec.height + 2 > ballRec.top + .5 * ballRec.height)
-				) {
+					&& blksRec.top + blksRec.height + 2 > ballRec.top + .5 * ballRec.height)) {
 				blks[i][j].setScale(0, 0);
 				xstep *= -1;
 				scour++;
@@ -166,7 +165,7 @@ int main(){
 	 // balss[1] >> gift ball no. 1 with x-position = y-position = 0 
 	 // balss[2] >> gift ball no. 2 with x-position = y-position = 0 
 
-	balls[0].setScale(1, 1);              // to make our original appear
+	balls[0].setScale(1, 1);                    // to make our original appear
 
 	RectangleShape tripleGift = gift();        // our gift, it's behaver is releas two new ball 
 
@@ -178,9 +177,9 @@ int main(){
 	Sound sound = sund("");*/
 
 	float steps[3][2] = { {1,1}, {-1,-1}, {1,-1} }; 
-	 // steps[0][0], steps[0][1] = x-step, y-step for original ball
-     // steps[1][0], steps[1][1] = x-step, y-step for gifted ball no. 1 
-     // steps[2][0], steps[2][1] = x-step, y-step for gifted ball no. 2
+	// steps[0][0], steps[0][1] = x-step, y-step for original ball
+        // steps[1][0], steps[1][1] = x-step, y-step for gifted ball no. 1 
+        // steps[2][0], steps[2][1] = x-step, y-step for gifted ball no. 2
 
 	bool is_trible_gft = false;          // to know if the trible_gift is catched
 
